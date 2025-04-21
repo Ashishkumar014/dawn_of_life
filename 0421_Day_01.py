@@ -48,3 +48,37 @@ class Solution:
         return len(st) == 0
 
 // Divide two integers LC 29:
+
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        d = dividend - divisor
+        flag = 0
+
+        if d == 0:
+            return 1
+        if d < divisor or dividend == 0:
+            return 0
+        if d == divisor:
+            return 2
+        
+        if dividend < 0 and divisor > 0:
+            flag += 1
+        if dividend > 0 and divisor < 0:
+            flag += 1
+
+
+        if dividend < 0:
+            dividend = 0 - dividend
+        if divisor < 0:
+            divisor = 0 - divisor
+
+        s = 0
+        
+        for i in range(d):
+            dividend -= divisor 
+            s += 1
+            if dividend < divisor:
+                if flag > 0:
+                    return 0-s
+                else:
+                    return s
